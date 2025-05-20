@@ -1,0 +1,69 @@
+# W&B Логирование 
+enable_wandb: False 
+wandb_project: "diffusion_summarization_skif"
+wandb_run_name: "xsum-diff-medium-ddim-seed42" 
+
+# Параметры Датасета 
+dataset_name: "xsum"
+train_size: 30000
+val_size: 3000
+test_size: 3000
+
+# Общие Настройки 
+seed: 42
+device: "cuda"
+run_baseline_first: False
+
+# Параметры Бейзлайна (T5-small) 
+baseline:
+  model_name: "t5-small"
+  max_doc_len: 512
+  max_summary_len: 64
+  batch_size: 16
+  learning_rate: 0.00003  
+  num_epochs: 3 
+  grad_accum_steps: 4 
+  weight_decay: 0.01
+  prefix: "summarize: "
+  output_dir: "./baseline_results"
+  save_path: "./baseline_best_model"
+  dataloader_num_workers: 0
+
+# Параметры Диффузии 
+diffusion:
+  tokenizer_name: "distilbert-base-uncased" 
+  max_doc_len: 256 # Ограничение для памяти
+  max_summary_len: 64
+  embedding_scaling_factor: 50
+  embedding_scaling_factor_doc: 1.0
+  # Параметры диффузии
+  timesteps: 1000 
+  noise_schedule: "cosine" # 'linear' или 'cosine'
+  beta_start: 0.0001
+  beta_end: 0.02
+  # Параметры модели
+  embed_dim: 512  
+  encoder_layers: 6 
+  decoder_layers: 6 
+  num_heads: 8 
+  dropout: 0.1
+  time_embed_dim: 128 # Размерность эмбеддинга времени
+  # Параметры обучения
+  batch_size: 16 
+  learning_rate: 0.0001
+  num_epochs: 20 
+  gradient_accumulation_steps: 4
+  grad_clip_value: 1.0
+  optimizer: "AdamW"
+  scheduler_warmup_steps: 500 
+  predict_xstart: False
+  amp_enabled: False
+  force_retrain: True
+  # Параметры генерации (инференса)
+  sampling_method: "ddim" # 'ddpm' или 'ddim'
+  generation_steps_inference: 100 
+  ddim_eta: 0.0 # 0.0 для детерминированного DDIM, 1.0 для DDPM-like стохастичности
+  x0_clamp_value_inference: 1.5 
+  # Пути
+  output_dir: "./diffusion_results"
+  save_path: "./diffusion_best_model.pth"

@@ -1,0 +1,185 @@
+jupyter-student1@ml-cyberia:~/pashaeva_s/diffusion_summarization_project$ python summarization_project.py --config config.yaml
+2025-05-20 15:44:59,135 - INFO - Logging configured.
+2025-05-20 15:44:59,135 - INFO - Script execution started.
+2025-05-20 15:44:59,136 - INFO - Parsed arguments: Namespace(config='config.yaml')
+2025-05-20 15:44:59,136 - INFO - main() function called.
+2025-05-20 15:44:59,142 - INFO - Configuration loaded from config.yaml
+2025-05-20 15:44:59,142 - INFO - Setting up DEVICE and SEED...
+2025-05-20 15:45:00,781 - INFO - Using device: cuda
+2025-05-20 15:45:00,783 - INFO - Seed set to 42
+2025-05-20 15:45:00,783 - INFO - Loading dataset...
+2025-05-20 15:45:00,783 - INFO - Loading dataset 'xsum'...
+Using the latest cached version of the module from /home/jupyter-student1/.cache/huggingface/modules/datasets_modules/datasets/xsum/082863bf4754ee058a5b6f6525d0cb2b18eadb62c7b370b095d1364050a52b71 (last modified on Tue May 13 09:00:57 2025) since it couldn't be found locally at xsum, or remotely on the Hugging Face Hub.
+2025-05-20 15:45:30,834 - WARNING - Using the latest cached version of the module from /home/jupyter-student1/.cache/huggingface/modules/datasets_modules/datasets/xsum/082863bf4754ee058a5b6f6525d0cb2b18eadb62c7b370b095d1364050a52b71 (last modified on Tue May 13 09:00:57 2025) since it couldn't be found locally at xsum, or remotely on the Hugging Face Hub.
+Using the latest cached version of the module from /home/jupyter-student1/.cache/huggingface/modules/datasets_modules/datasets/xsum/082863bf4754ee058a5b6f6525d0cb2b18eadb62c7b370b095d1364050a52b71 (last modified on Tue May 13 09:00:57 2025) since it couldn't be found locally at xsum, or remotely on the Hugging Face Hub.
+2025-05-20 15:46:05,951 - WARNING - Using the latest cached version of the module from /home/jupyter-student1/.cache/huggingface/modules/datasets_modules/datasets/xsum/082863bf4754ee058a5b6f6525d0cb2b18eadb62c7b370b095d1364050a52b71 (last modified on Tue May 13 09:00:57 2025) since it couldn't be found locally at xsum, or remotely on the Hugging Face Hub.
+Using the latest cached version of the module from /home/jupyter-student1/.cache/huggingface/modules/datasets_modules/datasets/xsum/082863bf4754ee058a5b6f6525d0cb2b18eadb62c7b370b095d1364050a52b71 (last modified on Tue May 13 09:00:57 2025) since it couldn't be found locally at xsum, or remotely on the Hugging Face Hub.
+2025-05-20 15:46:41,042 - WARNING - Using the latest cached version of the module from /home/jupyter-student1/.cache/huggingface/modules/datasets_modules/datasets/xsum/082863bf4754ee058a5b6f6525d0cb2b18eadb62c7b370b095d1364050a52b71 (last modified on Tue May 13 09:00:57 2025) since it couldn't be found locally at xsum, or remotely on the Hugging Face Hub.
+2025-05-20 15:46:41,087 - INFO - Dataset loaded and sliced successfully.
+2025-05-20 15:46:41,087 - INFO - Train size: 30000, Val size: 3000, Test size: 3000
+2025-05-20 15:46:41,087 - INFO - Skipping baseline execution as 'run_baseline_first' is False or 'baseline' config is missing.
+2025-05-20 15:46:41,087 - INFO - Starting Diffusion Model process...
+2025-05-20 15:46:41,087 - INFO - 
+==================================================
+=== Setting up Diffusion Model ===
+==================================================
+
+2025-05-20 15:46:41,087 - INFO - Attempting to load diffusion tokenizer from local path: offline_hf_components/distilbert-base-uncased
+2025-05-20 15:46:41,124 - INFO - Diffusion tokenizer 'distilbert-base-uncased' loaded. Vocab size: 30522
+2025-05-20 15:46:41,124 - INFO - Tokenizing datasets for Diffusion Model...
+2025-05-20 15:46:41,124 - INFO - Using 14 processes for diffusion dataset mapping.
+Map (num_proc=14): 100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 30000/30000 [00:04<00:00, 6814.43 examples/s]
+Map (num_proc=14): 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 3000/3000 [00:00<00:00, 4063.65 examples/s]
+Map (num_proc=14): 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 3000/3000 [00:00<00:00, 4066.29 examples/s]
+2025-05-20 15:46:48,267 - INFO - Diffusion tokenization complete.
+2025-05-20 15:46:48,267 - INFO - Using 0 workers for Diffusion DataLoaders.
+2025-05-20 15:46:48,268 - INFO - Diffusion DataLoaders created: Train 1875, Val 94, Test 94 batches
+2025-05-20 15:46:48,304 - INFO - Effective vocabulary size for diffusion model: 30522
+2025-05-20 15:46:49,092 - INFO - Diffusion Learning Rate set to: 0.0001
+2025-05-20 15:46:49,094 - INFO - Diffusion model parameters: 61,507,584
+2025-05-20 15:46:49,094 - INFO - Total optimizer steps: 9380, Grad Accum Steps: 4, Warmup steps: 500
+2025-05-20 15:46:49,094 - INFO - Starting Diffusion Model Training...
+2025-05-20 15:46:49,094 - INFO - Proceeding with diffusion model training loop.
+Epoch 1/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.981]
+2025-05-20 16:03:28,973 - INFO - Epoch 1/20 Avg Diffusion Training Loss: 1.079394
+Epoch 1/20 [Diff Validation]:   0%|                                                                                                                 | 0/94 [00:00<?, ?it/s]/opt/tljh/user/lib/python3.10/site-packages/torch/nn/modules/transformer.py:409: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. (Triggered internally at ../aten/src/ATen/NestedTensorImpl.cpp:178.)
+  output = torch._nested_tensor_from_mask(output, src_key_padding_mask.logical_not(), mask_check=False)
+Epoch 1/20 [Diff Validation]: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.74it/s, loss=0.926]
+2025-05-20 16:04:03,314 - INFO - Epoch 1/20 Avg Diffusion Validation Loss: 0.924772
+2025-05-20 16:04:03,671 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.924772)
+Epoch 2/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:40<00:00,  1.87it/s, loss=0.684]
+2025-05-20 16:20:43,728 - INFO - Epoch 2/20 Avg Diffusion Training Loss: 0.816153
+Epoch 2/20 [Diff Validation]: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.74it/s, loss=0.588]
+2025-05-20 16:21:18,003 - INFO - Epoch 2/20 Avg Diffusion Validation Loss: 0.590678
+2025-05-20 16:21:18,870 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.590678)
+Epoch 3/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:40<00:00,  1.87it/s, loss=0.577]
+2025-05-20 16:37:59,044 - INFO - Epoch 3/20 Avg Diffusion Training Loss: 0.633529
+Epoch 3/20 [Diff Validation]: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.46]
+2025-05-20 16:38:33,267 - INFO - Epoch 3/20 Avg Diffusion Validation Loss: 0.444515
+2025-05-20 16:38:34,135 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.444515)
+Epoch 4/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.491]
+2025-05-20 16:55:13,430 - INFO - Epoch 4/20 Avg Diffusion Training Loss: 0.528644
+Epoch 4/20 [Diff Validation]: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.74it/s, loss=0.353]
+2025-05-20 16:55:47,677 - INFO - Epoch 4/20 Avg Diffusion Validation Loss: 0.349617
+2025-05-20 16:55:48,544 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.349617)
+Epoch 5/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.433]
+2025-05-20 17:12:28,085 - INFO - Epoch 5/20 Avg Diffusion Training Loss: 0.453117
+Epoch 5/20 [Diff Validation]: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.293]
+2025-05-20 17:13:02,317 - INFO - Epoch 5/20 Avg Diffusion Validation Loss: 0.280180
+2025-05-20 17:13:03,183 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.280180)
+Epoch 6/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.387]
+2025-05-20 17:29:42,565 - INFO - Epoch 6/20 Avg Diffusion Training Loss: 0.394259
+Epoch 6/20 [Diff Validation]: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.248]
+2025-05-20 17:30:16,790 - INFO - Epoch 6/20 Avg Diffusion Validation Loss: 0.228312
+2025-05-20 17:30:17,656 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.228312)
+Epoch 7/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:38<00:00,  1.88it/s, loss=0.306]
+2025-05-20 17:46:56,510 - INFO - Epoch 7/20 Avg Diffusion Training Loss: 0.348920
+Epoch 7/20 [Diff Validation]: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.74it/s, loss=0.178]
+2025-05-20 17:47:30,761 - INFO - Epoch 7/20 Avg Diffusion Validation Loss: 0.186260
+2025-05-20 17:47:31,626 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.186260)
+Epoch 8/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.279]
+2025-05-20 18:04:11,301 - INFO - Epoch 8/20 Avg Diffusion Training Loss: 0.310130
+Epoch 8/20 [Diff Validation]: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.18]
+2025-05-20 18:04:45,519 - INFO - Epoch 8/20 Avg Diffusion Validation Loss: 0.152411
+2025-05-20 18:04:46,390 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.152411)
+Epoch 9/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.258]
+2025-05-20 18:21:25,690 - INFO - Epoch 9/20 Avg Diffusion Training Loss: 0.279027
+Epoch 9/20 [Diff Validation]: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.112]
+2025-05-20 18:21:59,905 - INFO - Epoch 9/20 Avg Diffusion Validation Loss: 0.131243
+2025-05-20 18:22:00,771 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.131243)
+Epoch 10/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.237]
+2025-05-20 18:38:40,017 - INFO - Epoch 10/20 Avg Diffusion Training Loss: 0.254049
+Epoch 10/20 [Diff Validation]: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.105]
+2025-05-20 18:39:14,234 - INFO - Epoch 10/20 Avg Diffusion Validation Loss: 0.108817
+2025-05-20 18:39:15,100 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.108817)
+Epoch 11/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.227]
+2025-05-20 18:55:54,866 - INFO - Epoch 11/20 Avg Diffusion Training Loss: 0.234812
+Epoch 11/20 [Diff Validation]: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.104]
+2025-05-20 18:56:29,036 - INFO - Epoch 11/20 Avg Diffusion Validation Loss: 0.096435
+2025-05-20 18:56:29,899 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.096435)
+Epoch 12/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.207]
+2025-05-20 19:13:09,364 - INFO - Epoch 12/20 Avg Diffusion Training Loss: 0.218680
+Epoch 12/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.74it/s, loss=0.0954]
+2025-05-20 19:13:43,618 - INFO - Epoch 12/20 Avg Diffusion Validation Loss: 0.085725
+2025-05-20 19:13:44,483 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.085725)
+Epoch 13/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:38<00:00,  1.88it/s, loss=0.189]
+2025-05-20 19:30:23,416 - INFO - Epoch 13/20 Avg Diffusion Training Loss: 0.206829
+Epoch 13/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.74it/s, loss=0.0777]
+2025-05-20 19:30:57,698 - INFO - Epoch 13/20 Avg Diffusion Validation Loss: 0.076546
+2025-05-20 19:30:58,562 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.076546)
+Epoch 14/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.193]
+2025-05-20 19:47:37,817 - INFO - Epoch 14/20 Avg Diffusion Training Loss: 0.196036
+Epoch 14/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.74it/s, loss=0.0878]
+2025-05-20 19:48:12,079 - INFO - Epoch 14/20 Avg Diffusion Validation Loss: 0.068709
+2025-05-20 19:48:12,945 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.068709)
+Epoch 15/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.186]
+2025-05-20 20:04:52,384 - INFO - Epoch 15/20 Avg Diffusion Training Loss: 0.188328
+Epoch 15/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.0785]
+2025-05-20 20:05:26,554 - INFO - Epoch 15/20 Avg Diffusion Validation Loss: 0.065225
+2025-05-20 20:05:27,421 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.065225)
+Epoch 15/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.186]
+2025-05-20 20:04:52,384 - INFO - Epoch 15/20 Avg Diffusion Training Loss: 0.188328
+Epoch 15/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.0785]
+2025-05-20 20:05:26,554 - INFO - Epoch 15/20 Avg Diffusion Validation Loss: 0.065225
+2025-05-20 20:05:27,421 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.065225)
+Epoch 16/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.193]
+2025-05-20 20:22:07,105 - INFO - Epoch 16/20 Avg Diffusion Training Loss: 0.182295
+Epoch 16/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.0725]
+2025-05-20 20:22:41,325 - INFO - Epoch 16/20 Avg Diffusion Validation Loss: 0.061126
+2025-05-20 20:22:42,184 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.061126)
+Epoch 17/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.166]
+2025-05-20 20:39:21,539 - INFO - Epoch 17/20 Avg Diffusion Training Loss: 0.177575
+Epoch 17/20 [Diff Validation]: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.065]
+2025-05-20 20:39:55,771 - INFO - Epoch 17/20 Avg Diffusion Validation Loss: 0.056750
+2025-05-20 20:39:56,629 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.056750)
+Epoch 18/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.172]
+2025-05-20 20:56:35,673 - INFO - Epoch 18/20 Avg Diffusion Training Loss: 0.174200
+Epoch 18/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.74it/s, loss=0.0649]
+2025-05-20 20:57:09,950 - INFO - Epoch 18/20 Avg Diffusion Validation Loss: 0.055454
+2025-05-20 20:57:10,812 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.055454)
+Epoch 19/20 [Diff Training]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.17]
+2025-05-20 21:13:50,041 - INFO - Epoch 19/20 Avg Diffusion Training Loss: 0.171831
+Epoch 19/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.0697]
+2025-05-20 21:14:24,242 - INFO - Epoch 19/20 Avg Diffusion Validation Loss: 0.054968
+2025-05-20 21:14:25,108 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.054968)
+Epoch 20/20 [Diff Training]: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1875/1875 [16:39<00:00,  1.88it/s, loss=0.168]
+2025-05-20 21:31:04,450 - INFO - Epoch 20/20 Avg Diffusion Training Loss: 0.170832
+Epoch 20/20 [Diff Validation]: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 94/94 [00:34<00:00,  2.75it/s, loss=0.0521]
+2025-05-20 21:31:38,637 - INFO - Epoch 20/20 Avg Diffusion Validation Loss: 0.054401
+2025-05-20 21:31:39,502 - INFO - Saved best diffusion model to ./diffusion_best_model.pth (Val Loss: 0.054401)
+2025-05-20 21:31:39,503 - INFO - Diffusion training process finished or was skipped/interrupted.
+2025-05-20 21:31:39,544 - INFO - ROUGE metric script loaded from 'rouge' for diffusion.
+2025-05-20 21:31:39,544 - INFO - 
+Evaluating Diffusion Model on Test Set (ROUGE)...
+2025-05-20 21:31:39,544 - INFO - Calculating ROUGE on up to 100 test samples for diffusion...
+2025-05-20 21:33:42,504 - INFO - Using default tokenizer.                                                                                                                  
+2025-05-20 21:33:43,039 - INFO -                                                                                                                                           
+Diffusion ROUGE Results on Test Set:
+2025-05-20 21:33:43,039 - INFO -   rouge1: 0.2038
+2025-05-20 21:33:43,039 - INFO -   rouge2: 0.0000
+2025-05-20 21:33:43,039 - INFO -   rougeL: 0.1783
+2025-05-20 21:33:43,040 - INFO -   rougeLsum: 0.1772
+2025-05-20 21:33:43,040 - INFO -   num_evaluated: 100.0000
+2025-05-20 21:33:43,040 - INFO - 
+Generating Diffusion example summary...
+2025-05-20 21:33:43,040 - INFO - 
+Generating Diffusion example summary...
+------------------------------
+Original Document (truncated for Diffusion):
+Prison Link Cymru had 1,099 referrals in 2015-16 and said some ex-offenders were living rough for up to a year before finding suitable accommodation.
+Workers at the charity claim investment in housing would be cheaper than jailing homeless repeat offenders.
+The Welsh Government said more people than ever were getting help to address housing problems.
+Changes to the Housing Act in Wales, introduced in 2015, removed the right for prison leavers to be given priority for accommodation.
+Prison Link C...
+------------------------------
+Reference Summary for Diffusion:
+There is a "chronic" need for more housing for prison leavers in Wales, according to a charity.
+------------------------------
+DIFFUSION Generated Summary:                                                                                                                                               
+offence offerskeepers oldsmore environmental core chart 1876 knockout superstar hammond accommodation protesting throwing offence impossible registered ideas burning iphonekh slovakia nominees sevilla 75 soft abilityallyide riders dollars ahmed inaweather impossible extending 51 increases kei dollarsvi jazzlbyrouries cum brink calendar gm hire ton affectinglby halt eleven fewer expelledfish gathering eyeskers constitutional ups
+------------------------------
+2025-05-20 21:33:44,271 - INFO - run_diffusion function finished.
+2025-05-20 21:33:44,286 - INFO - Diffusion Model process finished.
+2025-05-20 21:33:44,286 - INFO - Project finished successfully.
+2025-05-20 21:33:44,287 - INFO - Script execution completed.
+jupyter-student1@ml-cyberia:~/pashaeva_s/diffusion_summarization_project$ 
